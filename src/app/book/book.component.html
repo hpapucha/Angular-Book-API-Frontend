@@ -1,1 +1,25 @@
-<p>book works!</p>
+<section>
+  <!--  <h2>Get All Books for {{this.emailAddress}}</h2>-->
+  <button (click)="getBooks()">Get All Books</button>
+</section>
+
+<h4>Create New Book</h4>
+<form (submit)="createBook()">
+  <input [(ngModel)]="bookTitle" name="categoryName" type="text" placeholder="name" />
+  <input [(ngModel)]="bookDescription" name="categoryDescription" type="text" placeholder="description" />
+  <input type="submit"/>
+</form>
+
+<div *ngIf="books">
+  <h4>All Books</h4>
+  <ul>
+    <li *ngFor="let book of books">
+      {{book.title}} -- {{book.description}}
+      <button (click)="deleteBooks(category)">delete</button>
+      <form (submit)="createRecipe(category)">
+        <input [(ngModel)]="recipeName" name="recipeName" type="text" placeholder="New Book" />
+        <input type="submit"/>
+      </form>
+    </li>
+  </ul>
+</div>

@@ -12,7 +12,7 @@ const routes: Routes = [
     component: SignupComponent
   },
   {
-    path: 'book',
+    path: 'books',
     component: BookComponent
   },
   {
