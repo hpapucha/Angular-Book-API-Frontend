@@ -36,21 +36,30 @@ export class BookService {
   createAuthor(book, newAuthor): any {
     console.log('service: ', book, newAuthor);
     const token = localStorage.getItem('token');
-    const requestOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`
+    const requestOptions = {headers: new HttpHeaders({Authorization: `Bearer ${token}`
       }),
     };
     return this.http.post(`${appUrl}/api/books/${book.id}/authors`, newAuthor, requestOptions);
   }
   getSingleBook(bookId): any {
     const token = localStorage.getItem('token');
-    const requestOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`
+    const requestOptions = {headers: new HttpHeaders({Authorization: `Bearer ${token}`
       }),
     };
-    return this.http
-      .get(`${appUrl}/api/books/${bookId}`, requestOptions);
+    return this.http.get(`${appUrl}/api/books/${bookId}`, requestOptions);
+  }
+  deleteSingleBook(bookId): any {
+    const token = localStorage.getItem('token');
+    const requestOptions = {headers: new HttpHeaders({Authorization: `Bearer ${token}`
+      }),
+    };
+    return this.http.delete(`${appUrl}/api/books/${bookId}`, requestOptions);
+  }
+  deleteAuthor(book, authorId): any {
+    const token = localStorage.getItem('token');
+    const requestOptions = {headers: new HttpHeaders({Authorization: `Bearer ${token}`
+      }),
+    };
+    return this.http.delete(`${appUrl}/api/books/${book.id}/authors/${authorId}`, requestOptions);
   }
 }

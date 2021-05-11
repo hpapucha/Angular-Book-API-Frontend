@@ -1,7 +1,6 @@
-<section>
-  <!--  <h2>Get All Books for {{this.emailAddress}}</h2>-->
-  <button (click)="getBooks()">Get All Books</button>
-</section>
+<header>
+  <h1>Book-API</h1>
+</header>
 
 <h4>Create New Book</h4>
 <form (submit)="createBook()">
@@ -20,10 +19,6 @@
         <li *ngFor="let author of book.authorList">
           {{author.name}}
       </ul>
-      <form (submit)="createRecipe(category)">
-        <input [(ngModel)]="recipeName" name="recipeName" type="text" placeholder="New Book" />
-        <input type="submit"/>
-      </form>
     </li>
   </ul>
 </div>

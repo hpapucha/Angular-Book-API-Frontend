@@ -1,14 +1,20 @@
 <div *ngIf="singleBook">
-  <h4>{{singleBook.name}}</h4>
+  <h2>{{singleBook.title}}</h2>
   <p>{{singleBook.description}}</p>
-  <form (submit)="createAuthor()">
-    <input [(ngModel)]="authorName" name="recipeName" type="text" placeholder="new recipe" />
-    <input type="submit"/>
+  <button (submit)="deleteSingleBook(bookId)">Delete Book</button>
+  <form (submit)="createAuthor(singleBook)">
+    <input [(ngModel)]="authorName" name="authorName" type="text" placeholder="New Author" />
+    <input [(ngModel)]="authorAge" name="authorAge" type="text" placeholder="Age" />
+    <input [(ngModel)]="authorNationality" name="authorName" type="text" placeholder="Nationality" />
+    <input type="Submit"/>
   </form>
   <ul>
+    <h4>Author Information</h4>
     <li *ngFor="let author of singleBook.authorList">
-      {{author.name}}
-      <button (click)="deleteRecipe(category)">delete</button>
+      <p>Author: {{author.name}}</p>
+      <p>Age:{{author.age}}</p>
+      <p>Nationality: {{author.nationality}}</p>
+      <button (click)="deleteAuthor(author.id)">Delete Author</button>
     </li>
   </ul>
 </div>
