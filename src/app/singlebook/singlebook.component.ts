@@ -35,6 +35,11 @@ export class SinglebookComponent implements OnInit {
     });
     this.ngOnInit();
   }
+  deleteBook(): any {
+    this.bookService.deleteBook(this.bookId).subscribe(response => {
+      console.log(response);
+    });
+  }
   deleteAuthor(authorId): any {
     this.bookService.deleteAuthor(this.singleBook, authorId).subscribe(response =>{
       console.log(response);

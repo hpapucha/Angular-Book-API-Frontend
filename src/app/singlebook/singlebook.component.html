@@ -1,7 +1,7 @@
 <div *ngIf="singleBook">
-  <h2>{{singleBook.title}}</h2>
-  <p>{{singleBook.description}}</p>
-  <button (submit)="deleteSingleBook(bookId)">Delete Book</button>
+  <h3>Book Title: {{singleBook.title}}</h3>
+  <p>Book Description: {{singleBook.description}}</p>
+  <button (click)="deleteBook()">Delete Book</button>
   <form (submit)="createAuthor(singleBook)">
     <input [(ngModel)]="authorName" name="authorName" type="text" placeholder="New Author" />
     <input [(ngModel)]="authorAge" name="authorAge" type="text" placeholder="Age" />
