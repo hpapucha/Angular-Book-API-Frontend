@@ -13,12 +13,12 @@ export class UserService {
   searchSubject = new Subject();
   constructor(private http: HttpClient, private router: Router) { console.log('user service loaded'); }
 
-  registerUser(newUser): void {
+  registerUser(newUser): any {
     console.log(newUser);
-    this.http
-      .post(`${appUrl}/auth/users/register`, newUser)
-      .subscribe(response => console.log(response), err => console.log(err));
+    return this.http
+      .post(`${appUrl}/auth/users/register`, newUser);
   }
+
   loginUser(user): void {
     console.log(user);
     this.http
@@ -28,12 +28,16 @@ export class UserService {
         localStorage.setItem('currentUser', `${user.email}`);
         localStorage.setItem('token', `${token}`);
         console.log(response, token);
+        this.currentUser = user.email;
+        this.searchSubject.next(this.currentUser);
+        this.router.navigate(['/book']);
       }, err => console.log(err));
   }
   logoutUser(): void {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
-    this.currentUser = '';
+    this.currentUser = null;
+    this.searchSubject.next(this.currentUser);
     this.router.navigate(['/login']);
   }
 }
