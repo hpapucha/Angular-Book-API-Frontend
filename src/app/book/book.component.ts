@@ -11,6 +11,7 @@ export class BookComponent implements OnInit {
   public books: any [];
   public bookTitle: string;
   public bookDescription: string;
+  public email: any;
 
   constructor(private bookService: BookService) { }
 
@@ -22,7 +23,8 @@ export class BookComponent implements OnInit {
   createBook(): any {
     const newBook = {
       title: this.bookTitle,
-      description: this.bookDescription
+      description: this.bookDescription,
+      email: localStorage.getItem('currentUser')
     };
     this.bookService.createBook(newBook).subscribe(response => {
       this.books = [...this.books, response];
