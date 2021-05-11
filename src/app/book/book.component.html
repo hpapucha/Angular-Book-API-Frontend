@@ -14,8 +14,12 @@
   <h4>All Books</h4>
   <ul>
     <li *ngFor="let book of books">
-      {{book.title}} -- {{book.description}} -- {{book.email}}
+      <a routerLink="/books/{{book.id}}">{{book.title}}</a>  -- {{book.description}} -- {{book.email}}
       <button (click)="deleteBooks(category)">delete</button>
+      <ul>
+        <li *ngFor="let author of book.authorList">
+          {{author.name}}
+      </ul>
       <form (submit)="createRecipe(category)">
         <input [(ngModel)]="recipeName" name="recipeName" type="text" placeholder="New Book" />
         <input type="submit"/>
@@ -23,3 +27,4 @@
     </li>
   </ul>
 </div>
+

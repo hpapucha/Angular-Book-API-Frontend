@@ -1,5 +1,6 @@
 import { BookService} from '../services/book/book.service';
 import { Component, OnInit } from '@angular/core';
+import {HttpHeaders} from '@angular/common/http';
 declare const M;
 
 @Component({
@@ -12,7 +13,7 @@ export class BookComponent implements OnInit {
   public bookTitle: string;
   public bookDescription: string;
   public email: any;
-
+  // Author table variables
   constructor(private bookService: BookService) { }
 
   getBooks(): any {
@@ -31,7 +32,6 @@ export class BookComponent implements OnInit {
     }, err => console.log(err));
     this.getBooks();
   }
-
   ngOnInit(): void {
     this.getBooks();
 
@@ -40,5 +40,4 @@ export class BookComponent implements OnInit {
       M.toast({html: toastHTML});
     }
   }
-
 }

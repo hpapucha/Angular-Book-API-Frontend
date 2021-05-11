@@ -33,4 +33,24 @@ export class BookService {
     return this.http
       .post(`${appUrl}/api/books/`, newBook, requestOptions);
   }
+  createAuthor(book, newAuthor): any {
+    console.log('service: ', book, newAuthor);
+    const token = localStorage.getItem('token');
+    const requestOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      }),
+    };
+    return this.http.post(`${appUrl}/api/books/${book.id}/authors`, newAuthor, requestOptions);
+  }
+  getSingleBook(bookId): any {
+    const token = localStorage.getItem('token');
+    const requestOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      }),
+    };
+    return this.http
+      .get(`${appUrl}/api/books/${bookId}`, requestOptions);
+  }
 }
