@@ -22,6 +22,13 @@
       <p>Age:{{author.age}}</p>
       <p>Nationality: {{author.nationality}}</p>
       <button (click)="deleteAuthor(author.id)">Delete Author</button>
+      <form (submit)="updateAuthor(bookId, author.id)">Update Author
+        <input [(ngModel)]="authorName" name="authorName" type="text" placeholder="New Author" />
+        <input [(ngModel)]="authorAge" name="authorAge" type="text" placeholder="Age" />
+        <input [(ngModel)]="authorNationality" name="authorName" type="text" placeholder="Nationality" />
+        <input type="Submit"/>
+      </form>
+
     </li>
   </ul>
 </div>

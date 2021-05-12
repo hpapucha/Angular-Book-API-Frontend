@@ -84,4 +84,13 @@ export class BookService {
     };
     return this.http.put(`${appUrl}/api/books/${bookId}`, updatedBook, requestOptions);
   }
+  updateAuthor(bookId, authorId, updatedAuthor): any {
+    const token = localStorage.getItem('token');
+    const requestOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      }),
+    };
+    return this.http.put(`${appUrl}/api/books/${bookId}/authors/${authorId}`, updatedAuthor, requestOptions);
+  }
 }

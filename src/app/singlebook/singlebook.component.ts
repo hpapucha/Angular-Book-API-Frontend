@@ -54,4 +54,30 @@ export class SinglebookComponent implements OnInit {
       console.log(response);
     });
   }
+  updateAuthor(bookId, authorId): any {
+    const updatedAuthor = {name: this.authorName, age: this.authorAge, nationality: this.authorNationality};
+    this.bookService.updateAuthor(this.bookId, authorId, updatedAuthor ).subscribe(response =>{
+      console.log(response);
+    });
+  }
+  // This is if we want to have a button to go to "Add author in a child page"
+  //
+  // createAuthor(): any {
+  //   const newAuthor = {name: this.authorName,
+  //     age: this.authorAge,
+  //     nationality: this.authorNationality
+  //   };
+  //   this.bookService.createAuthor(this.singlebook, newAuthor).subscribe(response => {
+  //     console.log(response);
+  //   });
+  // }
+  // ngOnInit(): void {
+  //   this.route.parent.paramMap
+  //     .subscribe( params => {
+  //       this.bookId = params.get('id');
+  //       this.bookService.getBook(this.bookId).subscribe(response => {
+  //         this.singlebook = response;
+  //       });
+  //     });
+  // }
 }
