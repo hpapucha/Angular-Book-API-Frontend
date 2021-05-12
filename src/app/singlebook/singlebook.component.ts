@@ -3,6 +3,7 @@ import {BookService} from '../services/book/book.service';
 import {ActivatedRoute} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
 import {BookComponent} from '../book/book.component';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-singlebook',
@@ -18,8 +19,10 @@ export class SinglebookComponent implements OnInit {
   authorAge: any;
   authorNationality: any;
 
-  constructor(private route: ActivatedRoute, private bookService: BookService) { }
-
+  constructor(private route: ActivatedRoute, private bookService: BookService, private router: Router ) { }
+  refreshPage(): void {
+    this.router.navigate(['/book']);
+  }
   ngOnInit(): void {
     this.route.paramMap
       .subscribe( params => {
@@ -42,23 +45,27 @@ export class SinglebookComponent implements OnInit {
     this.bookService.deleteBook(this.bookId).subscribe(response => {
       console.log(response);
     });
+    this.refreshPage();
   }
   deleteAuthor(authorId): any {
     this.bookService.deleteAuthor(this.singleBook, authorId).subscribe(response =>{
       console.log(response);
     });
+    this.ngOnInit();
   }
   updateSingleBook(bookId): any {
     const updatedBook = {title: this.title, description: this.description};
     this.bookService.updateSingleBook(bookId, updatedBook).subscribe(response =>{
       console.log(response);
     });
+    this.ngOnInit();
   }
   updateAuthor(bookId, authorId): any {
     const updatedAuthor = {name: this.authorName, age: this.authorAge, nationality: this.authorNationality};
     this.bookService.updateAuthor(this.bookId, authorId, updatedAuthor ).subscribe(response =>{
       console.log(response);
     });
+    this.ngOnInit();
   }
   // This is if we want to have a button to go to "Add author in a child page"
   //
