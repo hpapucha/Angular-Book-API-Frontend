@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BookService} from '../services/book/book.service';
 import {ActivatedRoute} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
+import {BookComponent} from '../book/book.component';
 
 @Component({
   selector: 'app-singlebook',
@@ -10,6 +11,8 @@ import {HttpHeaders} from '@angular/common/http';
 })
 export class SinglebookComponent implements OnInit {
   bookId: any;
+  title: any;
+  description: any;
   singleBook: any;
   authorName: '';
   authorAge: any;
@@ -42,6 +45,12 @@ export class SinglebookComponent implements OnInit {
   }
   deleteAuthor(authorId): any {
     this.bookService.deleteAuthor(this.singleBook, authorId).subscribe(response =>{
+      console.log(response);
+    });
+  }
+  updateSingleBook(bookId): any {
+    const updatedBook = {title: this.title, description: this.description};
+    this.bookService.updateSingleBook(bookId, updatedBook).subscribe(response =>{
       console.log(response);
     });
   }

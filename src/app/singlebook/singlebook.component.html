@@ -2,6 +2,11 @@
   <h3>Book Title: {{singleBook.title}}</h3>
   <p>Book Description: {{singleBook.description}}</p>
   <button (click)="deleteBook()">Delete Book</button>
+  <form (submit)="updateSingleBook(bookId)" >
+    <input [(ngModel)]="title" name="updateTitle" type="text" placeholder="name" />
+    <input [(ngModel)]="description" name="updateDescription" type="text" placeholder="description" />
+    <input type="Submit"/>
+  </form>
   <form (submit)="createAuthor(singleBook)">
     <input [(ngModel)]="authorName" name="authorName" type="text" placeholder="New Author" />
     <input [(ngModel)]="authorAge" name="authorAge" type="text" placeholder="Age" />
