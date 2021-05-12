@@ -13,11 +13,12 @@
   <h4>All Books</h4>
   <ul>
     <li *ngFor="let book of books">
-      <a routerLink="/books/{{book.id}}">{{book.title}}</a>  -- {{book.description}} -- {{book.email}}
-      <button (click)="deleteBooks(category)">delete</button>
+     <p> <a routerLink="/books/{{book.id}}">{{book.title}}</a> </p>
+      <p>Description: {{book.description}}</p>
+      <p>User: {{book.email}}</p>
       <ul>
         <li *ngFor="let author of book.authorList">
-          {{author.name}}
+        Author:  {{author.name}}
       </ul>
     </li>
   </ul>
